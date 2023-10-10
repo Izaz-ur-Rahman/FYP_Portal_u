@@ -11,7 +11,7 @@
         <a class="nav-link text-white" href="submitted_student.php">SUBMITTED<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="checked_details.php">CHECKED</a>
+        <a class="nav-link text-white" href="checked_students.php">CHECKED</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
