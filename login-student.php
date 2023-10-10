@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['name'] = $name;
-            header("location: submitted.php");
+            header("location: submitted_student.php");
         } else {
             $showError = "Sorry! Invalid Credentials";
         }

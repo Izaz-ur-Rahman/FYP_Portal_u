@@ -22,7 +22,7 @@
                         IZAZ UR RAHMAN
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">LOGOUT</a>
+                        <a class="dropdown-item" href="login-professor.php">LOGOUT</a>
                         <div class="dropdown-divider"></div>
                     </div>
                 </li>

@@ -7,6 +7,7 @@ $showError = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'connect_db.php';
+
     $cnic = $_POST["cnic"];
     $password = $_POST["password"];
 
@@ -27,31 +28,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $context = stream_context_create($options);
     $verify = file_get_contents($url, false, $context);
     $captchaSuccess = json_decode($verify)->success;
+
+    // Query to retrieve teacher based on CNIC and password
     $sql = "SELECT * FROM teacher WHERE cnic = '$cnic' AND password = '$password'";
-        $result = mysqli_query($conn, $sql);
-        $num = mysqli_num_rows($result);
+    $result = mysqli_query($conn, $sql);
+    $num = mysqli_num_rows($result);
 
-        if ($num == 1) {
-            $login = true;
-            session_start();
-            $_SESSION['loggedin'] = true;
+    if ($num == 1) {
+        $login = true;
+        session_start();
+        $_SESSION['loggedin'] = true;
 
-            // Store the teacher's CNIC in the session
-            $_SESSION['teacher_cnic'] = $cnic;
+        // Store the teacher's CNIC in the session
+        $_SESSION['teacher_cnic'] = $cnic;
 
-            echo "Redirecting..."; // Add this line for debugging
-            header("location: teacher.php");
-            exit; // Make sure to exit after redirection
-        } else {
-            $showError = "Sorry! Invalid Credentials";
-        }
+        echo "Redirecting..."; // Add this line for debugging
+        header("location: teacher.php");
+        exit; // Make sure to exit after redirection
+    } else {
+        $showError = "Sorry! Invalid Credentials";
+    }
+
     if (!$captchaSuccess) {
         $showError = "Please complete the CAPTCHA.";
     }
 }
 ?>
-
-<!-- Rest of your HTML code remains the same -->
 
 
 <!DOCTYPE html>
@@ -90,6 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <div class="login-container">
     <h1>Login as Professor</h1>
     <form action="login-professor.php" method="post">
+
       <div class="form-group">
         <label for="cnic">CNIC</label>
         <input type="text" id="username" name="cnic" required />
