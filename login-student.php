@@ -1,14 +1,20 @@
 <?php
 $login = false;
 $showError = false;
+<<<<<<< HEAD
 session_start();
+=======
+>>>>>>> c31ce7ba3f969ba68344d18f0e3286603692987e
 
 // Your reCAPTCHA secret key
 $recaptchaSecretKey = '6Ldpj40oAAAAAKGkhhDcy7dyeSsfrdkVGLiJgYaT';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'connect_db.php';
+<<<<<<< HEAD
     $name = $_POST["name"];
+=======
+>>>>>>> c31ce7ba3f969ba68344d18f0e3286603692987e
     $email = $_POST["email"];
     $password = $_POST["password"];
     $recaptchaResponse = $_POST["g-recaptcha-response"];
@@ -22,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ];
 
     $recaptchaOptions = [
+<<<<<<< HEAD
         CURLOPT_URL => $recaptchaUrl,
         CURLOPT_POST => true,
         CURLOPT_POSTFIELDS => http_build_query($recaptchaData),
@@ -37,10 +44,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $recaptchaResult = curl_exec($recaptchaCurl);
     curl_close($recaptchaCurl);
 
+=======
+        'http' => [
+            'method' => 'POST',
+            'header' => 'Content-Type: application/x-www-form-urlencoded',
+            'content' => http_build_query($recaptchaData),
+        ],
+    ];
+
+    $recaptchaContext = stream_context_create($recaptchaOptions);
+    $recaptchaResult = file_get_contents($recaptchaUrl, false, $recaptchaContext);
+>>>>>>> c31ce7ba3f969ba68344d18f0e3286603692987e
     $recaptchaResult = json_decode($recaptchaResult);
 
     if ($recaptchaResult->success) {
         // CAPTCHA verification passed, continue with user authentication
+<<<<<<< HEAD
         $sql = "SELECT * FROM student WHERE email = '$email' AND password = '$password' AND name = '$name'";
         $result = mysqli_query($conn, $sql);
         $num = mysqli_num_rows($result);
@@ -51,6 +70,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['name'] = $_POST["name"];
             header("location: submitted_student.php");
             exit();
+=======
+        $sql = "SELECT * FROM student WHERE email = '$email' AND password = '$password'";
+        $result = mysqli_query($conn, $sql);
+        $num = mysqli_num_rows($result);
+
+        if ($num == 1) {
+            $login = true;
+            session_start();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['name'] = $name;
+            header("location: submitted_student.php");
+>>>>>>> c31ce7ba3f969ba68344d18f0e3286603692987e
         } else {
             $showError = "Sorry! Invalid Credentials";
         }
@@ -72,7 +103,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="stylesheet" href="style_1.css" />
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
+<<<<<<< HEAD
   <title>Login</title>
+=======
+  <title>Attractive Login Page</title>
+>>>>>>> c31ce7ba3f969ba68344d18f0e3286603692987e
 </head>
 
 <body>
@@ -101,10 +136,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h1>Login as Student</h1>
     <form action="login-student.php" method="post">
       <div class="form-group">
+<<<<<<< HEAD
         <label for="name">Name</label>
         <input type="text" id="name" name="name" required />
       </div>
       <div class="form-group">
+=======
+>>>>>>> c31ce7ba3f969ba68344d18f0e3286603692987e
         <label for="email">Email</label>
         <input type="text" id="username" name="email" required />
       </div>
@@ -124,8 +162,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <p>Not Registered? <a href="signup-student.php">Sign up</a></p>
 
+<<<<<<< HEAD
     <a href="home.php">
       <button class="btn btn-primary">Back to Home</button><br /><br />
+=======
+    <a href="login-professor.php">
+      <button class="btn btn-primary">Login as Professor</button><br /><br />
+>>>>>>> c31ce7ba3f969ba68344d18f0e3286603692987e
     </a>
   </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

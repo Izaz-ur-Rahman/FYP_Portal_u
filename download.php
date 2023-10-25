@@ -1,5 +1,6 @@
 <?php
 include 'connect_db';
+<<<<<<< HEAD
 session_start();
 
   // Check if the teacher is authenticated (i.e., if the teacher's name is in the session)
@@ -11,6 +12,8 @@ session_start();
       // Optionally, you can exit the script to prevent further code execution.
       exit();
   }
+=======
+>>>>>>> c31ce7ba3f969ba68344d18f0e3286603692987e
 // Check if the "file" parameter is present in the URL
 if (isset($_GET['file'])) {
     $file = $_GET['file'];

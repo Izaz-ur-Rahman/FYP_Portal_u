@@ -1,15 +1,25 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+<<<<<<< HEAD
 session_start();
+=======
+
+>>>>>>> c31ce7ba3f969ba68344d18f0e3286603692987e
 $login = false;
 $showError = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'connect_db.php';
+<<<<<<< HEAD
     $cnic = $_POST["cnic"];
     $password = $_POST["password"];
     $name = $_POST["name"];
+=======
+
+    $cnic = $_POST["cnic"];
+    $password = $_POST["password"];
+>>>>>>> c31ce7ba3f969ba68344d18f0e3286603692987e
 
     // Verify reCAPTCHA response
     $recaptchaSecretKey = "6LdElo0oAAAAAMIgSbku7V9sBCmeiKjZ5avk4Q9b";
@@ -22,7 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $options = array(
         'http' => array(
             'method' => 'POST',
+<<<<<<< HEAD
             'header' => 'Content-type: application/x-www-form-urlencoded', // Specify Content-type
+=======
+>>>>>>> c31ce7ba3f969ba68344d18f0e3286603692987e
             'content' => http_build_query($data)
         )
     );
@@ -31,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $captchaSuccess = json_decode($verify)->success;
 
     // Query to retrieve teacher based on CNIC and password
+<<<<<<< HEAD
     $sql = "SELECT * FROM teacher WHERE cnic = '$cnic' AND name = '$name'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
@@ -62,6 +76,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
+=======
+    $sql = "SELECT * FROM teacher WHERE cnic = '$cnic' AND password = '$password'";
+    $result = mysqli_query($conn, $sql);
+    $num = mysqli_num_rows($result);
+
+    if ($num == 1) {
+        $login = true;
+        session_start();
+        $_SESSION['loggedin'] = true;
+
+        // Store the teacher's CNIC in the session
+        $_SESSION['teacher_cnic'] = $cnic;
+
+        echo "Redirecting..."; // Add this line for debugging
+        header("location: teacher.php");
+        exit; // Make sure to exit after redirection
+    } else {
+        $showError = "Sorry! Invalid Credentials";
+    }
+
+    if (!$captchaSuccess) {
+        $showError = "Please complete the CAPTCHA.";
+    }
+}
+?>
+
+
+>>>>>>> c31ce7ba3f969ba68344d18f0e3286603692987e
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,7 +114,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
   <link rel="stylesheet" href="style_1.css" />
+<<<<<<< HEAD
   <title>Login</title>
+=======
+  <title>Attractive Login Page</title>
+>>>>>>> c31ce7ba3f969ba68344d18f0e3286603692987e
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
@@ -98,10 +144,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <div class="login-container">
     <h1>Login as Professor</h1>
     <form action="login-professor.php" method="post">
+<<<<<<< HEAD
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" required />
       </div>
+=======
+
+>>>>>>> c31ce7ba3f969ba68344d18f0e3286603692987e
       <div class="form-group">
         <label for="cnic">CNIC</label>
         <input type="text" id="username" name="cnic" required />
@@ -121,8 +171,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
     </form>
     <p>Not Registered? <a href="signup-professor.php">Sign up</a></p>
+<<<<<<< HEAD
     <a href="home.php">
       <button>Back to Home</button>
+=======
+    <a href="login-student.php">
+      <button>Login as Student</button>
+>>>>>>> c31ce7ba3f969ba68344d18f0e3286603692987e
     </a>
   </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

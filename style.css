@@ -51,6 +51,7 @@
 .download:hover {
   background-color: #f4f80b; /* Change background color on hover */
 }
+<<<<<<< HEAD
 
 .pend {
   margin: 5px;
@@ -59,3 +60,5 @@
   text-align: center;
   width: 100%;
 }
+=======
+>>>>>>> c31ce7ba3f969ba68344d18f0e3286603692987e
