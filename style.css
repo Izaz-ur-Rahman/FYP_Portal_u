@@ -1,0 +1,61 @@
+/* Custom background color classes */
+.bg-custom1 {
+  background-color: #58b4ff; /* Replace with your desired color */
+  padding: 18px 10px;
+  margin: -17px;
+  margin-top: -20px;
+  margin-bottom: -17px;
+  margin-right: 10px;
+}
+
+.bg-custom2 {
+  background-color: #45d2ff; /* Replace with your desired color */
+}
+.bg-custom3 {
+  background-color: #58b4ff;
+  padding: 3px -15px;
+  padding-bottom: -5px;
+  margin: -7px;
+  margin-bottom: -10px;
+  padding-left: 10px;
+  margin-right: 14px;
+  margin-top: -5px;
+}
+.grid-item {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.assign_marks {
+  background-color: greenyellow;
+
+  border-radius: 35%;
+}
+.assign_marks:active {
+  background-color: #1c6a8c; /* Change background color on click */
+}
+.assign_marks:hover {
+  background-color: #f4f80b; /* Change background color on hover */
+}
+.center-text {
+  text-align: center;
+}
+.download {
+  background-color: paleturquoise;
+  border-radius: 35%;
+}
+.download:hover {
+  background-color: #f4f80b; /* Change background color on hover */
+}
+.download:hover {
+  background-color: #f4f80b; /* Change background color on hover */
+}
+
+.pend {
+  margin: 5px;
+  margin-left: -30px;
+  height: 43px;
+  text-align: center;
+  width: 100%;
+}
